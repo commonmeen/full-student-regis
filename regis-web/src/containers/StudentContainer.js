@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import StudentForm from '../components/StudentForm';
-import {insertStudent,getAllStudent, deleteAllStudent} from '../actions/StudentAction'
+import {insertStudent,getAllStudent, deleteAllStudent,deleteStudent} from '../actions/StudentAction'
 import axios from 'axios';
 import { async } from 'q';
 
@@ -31,7 +31,18 @@ const mapDispatchToProps = (dispatch) => ({
         } catch (error) {
             console.log("Error message",error.message)
         }
+    },
+    deleteStudent:async (id) =>{
+        try {
+            const response = await axios.delete("http://localhost:8080/api/delete/"+id)
+            console.log(response)
+            dispatch(deleteStudent(id))
+        } catch (error) {
+            console.log("Error message",error)
+        }
     }
+
+
 
 
 })

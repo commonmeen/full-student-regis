@@ -2,7 +2,7 @@
 import _ from 'lodash'
 
 const initial = {
-    result:[]
+    result: []
 }
 
 const StudentReducer = (state = initial, action) => {
@@ -10,14 +10,16 @@ const StudentReducer = (state = initial, action) => {
 
     switch (action.type) {
         case "INSERT":
-            nextState.result = [...state.result,action.payload];
-            // console.log("Next",nextState)
+            nextState.result = [...state.result, action.payload];
             return nextState
         case "QUERY":
-            nextState.result = [...state.result,action.payload];
+            nextState.result = [...state.result, action.payload];
+            return nextState
+        case "DELETE_ALL":
+            nextState.result = [...state.result, action.payload];
             return nextState
         case "DELETE":
-            nextState.result = [...state.result,action.payload];
+            nextState.result = [...state.result, action.payload];
             return nextState
         default:
             return nextState

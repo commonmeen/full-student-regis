@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Form, Button, Row, Col } from 'react-bootstrap'
-import StudentItem from './StudentItem';
+import StudentItem from '../components/StudentItem';
 import axios from 'axios'
 import { async } from 'q';
 
@@ -10,14 +10,8 @@ const StudentForm = (props) => {
     const [surname, setSurname] = useState()
     const [faculty, setFaculty] = useState()
     const [year, setYear] = useState()
-    const [all, setAll] = useState([])
     const { insertStudent, getAllStudent, deleteAllStudent, result } = props
-    const arrSize = all.length
-    useEffect(() => {
-        const response = axios.get("http://localhost:8080/api/all").then(response => {
-            setAll(response.data)
-        })
-    }, []);
+
 
     const handleSumbit = (e) => {
 
@@ -33,7 +27,6 @@ const StudentForm = (props) => {
     const hadleDelete = (e) =>{
         deleteAllStudent()
     }
-
 
     return (
         <div>
@@ -52,7 +45,7 @@ const StudentForm = (props) => {
                     </Col>
 
                     <Col sm={6}>
-                        <StudentItem {...all}></StudentItem>
+                        <StudentItem {...props}></StudentItem>
                     </Col>
 
                 </Row>
