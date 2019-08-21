@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Form, Button, Row, Col } from 'react-bootstrap'
 import StudentItem from '../components/StudentItem';
-import axios from 'axios'
-import { async } from 'q';
+import MenuBar from './MenuBar';
+
 
 const StudentForm = (props) => {
 
@@ -30,11 +30,12 @@ const StudentForm = (props) => {
 
     return (
         <div>
-            <Container>
+            <MenuBar></MenuBar>
+            <Container className="mt-4" >
                 <Row>
                     <Col sm={6}>
                         <Form onSubmit={handleSumbit}>
-                            <p>Student Form</p>
+                            <p className="mx-auto">Student Form</p>
                             <Form.Control type="text" name="name" placeholder="Name" onChange={e => setName(e.target.value)}></Form.Control>
                             <Form.Control type="text" name="surname" placeholder="Surname" onChange={e => setSurname(e.target.value)}></Form.Control>
                             <Form.Control type="text" name="faculty" placeholder="Faculty" onChange={e => setFaculty(e.target.value)}></Form.Control>
