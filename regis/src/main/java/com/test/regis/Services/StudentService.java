@@ -11,32 +11,13 @@ import sun.security.provider.certpath.OCSPResponse;
 
 import java.util.Optional;
 
-@Service
-public class StudentService {
-    @Autowired
-    StudentRepository studentRepository;
 
-    public Student creatStudent(Student student){
-        return studentRepository.save(student);
-    }
+public interface StudentService {
 
-    public Student getStudentById(long id) {
-        return studentRepository.getStudentById(id);
-    }
-
-    public Student getStudentByName(String name){
-        return studentRepository.getStudentByName(name);
-    }
-
-    public Iterable<Student> getAllStudent(){
-        return studentRepository.findAll();
-    }
-
-    public void delete(long id){
-        studentRepository.deleteById(id);
-    }
-
-    public void deleteAll(){
-        studentRepository.deleteAll();
-    }
+    public Student creatStudent(Student student);
+    public Student getStudentById(long id);
+    public Student getStudentByName(String name);
+    public Iterable<Student> getAllStudent();
+    public void delete(long id);
+    public void deleteAll();
 }
